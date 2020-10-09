@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'package:meta/meta.dart';
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter_social_login/repository/user-repository.dart';
 import 'package:flutter_social_login/bloc/authenticate-bloc.dart';
-import 'package:equatable/equatable.dart';
 
 abstract class LoginState extends Equatable {
-  LoginState();
+  // const LoginState();
 
   @override
   List<Object> get props => [];
@@ -19,7 +19,7 @@ class LoginLoading extends LoginState {}
 class LoginFailure extends LoginState {
   final String error;
 
-  const LoginFailure({@required this.error});
+  LoginFailure({@required this.error});
 
   @override
   List<Object> get props => [error];
@@ -29,14 +29,14 @@ class LoginFailure extends LoginState {
 }
 
 abstract class LoginEvent extends Equatable {
-  const LoginEvent();
+  LoginEvent();
 }
 
 class LoginButtonPressed extends LoginEvent {
   final String username;
   final String password;
 
-  const LoginButtonPressed({
+  LoginButtonPressed({
     @required this.username,
     @required this.password,
   });

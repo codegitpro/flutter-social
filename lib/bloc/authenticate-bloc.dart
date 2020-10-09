@@ -4,6 +4,8 @@ import 'package:meta/meta.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_social_login/repository/user-repository.dart';
 
+// authenticate event
+
 abstract class AuthenticationEvent extends Equatable {
   AuthenticationEvent([List props = const []]) : super(props);
 }
@@ -27,6 +29,8 @@ class LoggedOut extends AuthenticationEvent {
   String toString() => 'LoggedOut';
 }
 
+// authenticate state
+
 abstract class AuthenticationState extends Equatable {
   @override
   List<Object> get props => [];
@@ -40,6 +44,7 @@ class AuthenticationUnauthenticated extends AuthenticationState {}
 
 class AuthenticationLoading extends AuthenticationState {}
 
+// authenticate bloc
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
   final UserRepository userRepository;
